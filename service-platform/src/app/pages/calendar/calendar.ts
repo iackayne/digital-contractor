@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTimepickerModule } from '@angular/material/timepicker';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-calendar',
@@ -28,6 +29,7 @@ import { MatTimepickerModule } from '@angular/material/timepicker';
     MatCardModule,
     MatCheckboxModule,
     MatTimepickerModule,
+    MatIconModule,
   ],
   templateUrl: './calendar.html',
   styleUrl: './calendar.scss',

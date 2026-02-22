@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { CommonModule, FormModule } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -16,7 +16,6 @@ import { MatChipsModule } from '@angular/material/chips';
   standalone: true,
   imports: [
     CommonModule,
-    FormModule,
     ReactiveFormsModule,
     MatTabsModule,
     MatFormFieldModule,

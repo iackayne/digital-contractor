@@ -7,6 +7,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
+import { MatDividerModule } from '@angular/material/divider';
 
 interface Project {
   id: string;
@@ -31,6 +32,7 @@ interface Project {
     MatProgressBarModule,
     MatMenuModule,
     MatTableModule,
+    MatDividerModule,
   ],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
