@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-service-request',
@@ -26,6 +27,7 @@ import { MatChipsModule } from '@angular/material/chips';
     MatCardModule,
     MatDividerModule,
     MatChipsModule,
+    MatIconModule,
   ],
   templateUrl: './service-request.html',
   styleUrl: './service-request.scss',
