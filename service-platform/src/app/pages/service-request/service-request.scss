@@ -1,0 +1,165 @@
+.service-request-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+
+.request-header {
+  margin-bottom: 48px;
+
+  h1 {
+    font-size: 2rem;
+    color: var(--color-text-primary);
+    margin-bottom: 8px;
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+  }
+}
+
+.request-card {
+  padding: 32px;
+  border: 1px solid var(--color-border);
+}
+
+.template-section {
+  margin-bottom: 24px;
+
+  h3 {
+    font-size: 1.1rem;
+    color: var(--color-text-primary);
+    margin-bottom: 16px;
+  }
+
+  .full-width {
+    width: 100%;
+  }
+}
+
+mat-divider {
+  margin: 24px 0;
+}
+
+.job-matrix-tabs {
+  margin-bottom: 24px;
+}
+
+.tab-content {
+  padding: 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+mat-form-field {
+  &.full-width {
+    width: 100%;
+  }
+}
+
+.frameworks-grid,
+.terms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+
+  button {
+    transition: all 0.2s ease;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+
+    &:hover {
+      border-color: var(--color-primary);
+      background-color: rgba(37, 99, 235, 0.04);
+    }
+
+    &.active {
+      background-color: var(--color-primary);
+      color: white;
+      border-color: var(--color-primary);
+    }
+  }
+}
+
+.payment-terms {
+  h4 {
+    font-size: 1rem;
+    color: var(--color-text-primary);
+    margin-bottom: 16px;
+  }
+}
+
+.selected-items {
+  h5 {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 12px;
+  }
+
+  mat-chip-set {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  mat-chip {
+    background-color: rgba(37, 99, 235, 0.1) !important;
+    color: var(--color-primary) !important;
+  }
+}
+
+.form-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-border);
+
+  button {
+    padding: 10px 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .service-request-container {
+    padding: 32px 16px;
+  }
+
+  .request-header {
+    margin-bottom: 32px;
+
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+
+  .request-card {
+    padding: 20px;
+  }
+
+  .frameworks-grid,
+  .terms-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+
+  .form-actions {
+    flex-direction: column;
+
+    button {
+      width: 100%;
+    }
+  }
+}

@@ -1,1 +1,59 @@
-<p>home works!</p>
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-container">
+    <h1 class="hero-title">Professional Digital Contracting Made Simple</h1>
+    <p class="hero-subtitle">Define your project scope, connect with qualified talent, and manage everything in one place.</p>
+    
+    <div class="hero-actions">
+      <button mat-raised-button color="primary" routerLink="/service-request">
+        Create Your First Request
+      </button>
+      <button mat-stroked-button routerLink="/about">
+        Explore Our Team
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="section features-section">
+  <div class="section-container">
+    <h2 class="section-title">Why Choose Us</h2>
+    
+    <div class="features-grid">
+      <mat-card *ngFor="let feature of features" class="feature-card">
+        <div class="feature-icon">
+          <mat-icon>{{ feature.icon }}</mat-icon>
+        </div>
+        <h3>{{ feature.title }}</h3>
+        <p>{{ feature.description }}</p>
+      </mat-card>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works Section -->
+<section class="section how-it-works">
+  <div class="section-container">
+    <h2 class="section-title">How It Works</h2>
+    
+    <div class="steps-container">
+      <div *ngFor="let step of steps" class="step">
+        <div class="step-number">{{ step.number }}</div>
+        <h4>{{ step.title }}</h4>
+        <p>{{ step.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="section cta-section">
+  <div class="cta-container">
+    <h2>Ready to Get Started?</h2>
+    <p>Create your job matrix and find the right contractor for your project.</p>
+    <button mat-raised-button color="primary" routerLink="/service-request">
+      Create Service Request
+    </button>
+  </div>
+</section>

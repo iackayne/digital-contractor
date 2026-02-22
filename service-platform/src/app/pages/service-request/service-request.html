@@ -1,1 +1,150 @@
-<p>service-request works!</p>
+<div class="service-request-container">
+  <div class="request-header">
+    <h1>Create Service Request</h1>
+    <p>Define your project requirements using our structured job matrix format.</p>
+  </div>
+
+  <mat-card class="request-card">
+    <form [formGroup]="form">
+      <!-- Template Selection -->
+      <div class="template-section">
+        <h3>Start with a Template (Optional)</h3>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Select Template</mat-label>
+          <mat-select formControlName="template">
+            <mat-option value="">-- Start from Scratch --</mat-option>
+            <mat-option *ngFor="let template of templates" [value]="template.value">
+              {{ template.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <mat-divider></mat-divider>
+
+      <!-- Tabbed Interface -->
+      <mat-tab-group class="job-matrix-tabs">
+        <!-- Tab 1: Project Information -->
+        <mat-tab label="Project Info">
+          <div class="tab-content">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Project Name</mat-label>
+              <input matInput formControlName="projectName" placeholder="e.g., E-commerce Platform Redesign">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Project Context</mat-label>
+              <textarea matInput formControlName="projectContext" rows="4" 
+                placeholder="Describe the project background and current situation..."></textarea>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Request/Intent</mat-label>
+              <textarea matInput formControlName="projectIntent" rows="4"
+                placeholder="What is the main goal or request for this project?"></textarea>
+            </mat-form-field>
+          </div>
+        </mat-tab>
+
+        <!-- Tab 2: Frameworks & Procedures -->
+        <mat-tab label="Frameworks & Procedures">
+          <div class="tab-content">
+            <h4>Select Applicable Frameworks/Procedures</h4>
+            <div class="frameworks-grid">
+              <button mat-stroked-button 
+                *ngFor="let framework of frameworks"
+                (click)="toggleFramework(framework)"
+                [class.active]="selectedFrameworks().includes(framework)">
+                {{ framework }}
+              </button>
+            </div>
+
+            <div class="selected-items">
+              <h5>Selected:</h5>
+              <mat-chip-set aria-label="Selected frameworks">
+                <mat-chip *ngFor="let framework of selectedFrameworks()" 
+                  (removed)="toggleFramework(framework)">
+                  {{ framework }}
+                  <button matChipRemove>
+                    <mat-icon>clear</mat-icon>
+                  </button>
+                </mat-chip>
+              </mat-chip-set>
+            </div>
+          </div>
+        </mat-tab>
+
+        <!-- Tab 3: Output Guidelines -->
+        <mat-tab label="Guidelines & Output">
+          <div class="tab-content">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Sample Output</mat-label>
+              <textarea matInput formControlName="sampleOutput" rows="4"
+                placeholder="Provide an example of the expected output or deliverable..."></textarea>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Output Guidelines</mat-label>
+              <textarea matInput formControlName="outputGuidelines" rows="4"
+                placeholder="Specify quality standards, formats, and any other output requirements..."></textarea>
+            </mat-form-field>
+          </div>
+        </mat-tab>
+
+        <!-- Tab 4: Budget & Payment -->
+        <mat-tab label="Budget & Payment">
+          <div class="tab-content">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Budget Range</mat-label>
+              <mat-select formControlName="budgetRange">
+                <mat-option value="">-- Select Budget Range --</mat-option>
+                <mat-option *ngFor="let range of budgetRanges" [value]="range.value">
+                  {{ range.label }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <div class="payment-terms">
+              <h4>Payment Terms</h4>
+              <div class="terms-grid">
+                <button mat-stroked-button 
+                  *ngFor="let term of paymentTerms"
+                  (click)="togglePaymentTerm(term)"
+                  [class.active]="selectedPaymentTerms().includes(term)">
+                  {{ term }}
+                </button>
+              </div>
+            </div>
+
+            <div class="selected-items">
+              <h5>Selected Terms:</h5>
+              <mat-chip-set aria-label="Selected payment terms">
+                <mat-chip *ngFor="let term of selectedPaymentTerms()" 
+                  (removed)="togglePaymentTerm(term)">
+                  {{ term }}
+                  <button matChipRemove>
+                    <mat-icon>clear</mat-icon>
+                  </button>
+                </mat-chip>
+              </mat-chip-set>
+            </div>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Additional Notes</mat-label>
+              <textarea matInput formControlName="additionalNotes" rows="3"
+                placeholder="Any additional information about payment terms..."></textarea>
+            </mat-form-field>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </form>
+
+    <!-- Form Actions -->
+    <div class="form-actions">
+      <button mat-stroked-button (click)="resetForm()">Clear Form</button>
+      <button mat-raised-button color="primary" (click)="submitForm()" [disabled]="!form.valid">
+        Submit Service Request
+      </button>
+    </div>
+  </mat-card>
+</div>

@@ -1,1 +1,73 @@
-<p>about works!</p>
+<div class="about-container">
+  <!-- Header Section -->
+  <section class="about-header">
+    <h1>Meet Our Team</h1>
+    <p>Talented digital professionals ready to bring your projects to life</p>
+  </section>
+
+  <!-- Mission Section -->
+  <section class="mission-section">
+    <div class="mission-container">
+      <h2>Our Mission</h2>
+      <p>
+        We believe in connecting businesses with top-tier digital talent who are passionate about 
+        delivering exceptional results. Our team of experienced professionals spans web development, 
+        cloud infrastructure, design, data engineering, and more.
+      </p>
+    </div>
+  </section>
+
+  <!-- Talent Showcase Grid -->
+  <section class="talent-section">
+    <div class="talent-container">
+      <h2>Our Talent Network</h2>
+      
+      <div class="talent-grid">
+        <mat-card *ngFor="let talent of talents" class="power-card">
+          <div class="card-header">
+            <div class="avatar">
+              <mat-icon>person</mat-icon>
+            </div>
+            <div class="card-title">
+              <h3>{{ talent.name }}</h3>
+              <p class="title">{{ talent.title }}</p>
+            </div>
+          </div>
+
+          <div class="card-bio">
+            <p>{{ talent.bio }}</p>
+          </div>
+
+          <div class="expertise-section">
+            <h5>Expertise</h5>
+            <mat-chip-set aria-label="Expertise">
+              <mat-chip *ngFor="let skill of talent.expertise" variant="outlined">
+                {{ skill }}
+              </mat-chip>
+            </mat-chip-set>
+          </div>
+
+          <div class="card-footer">
+            <button mat-icon-button [attr.aria-label]="'Email ' + talent.name">
+              <mat-icon>email</mat-icon>
+            </button>
+            <button mat-icon-button [attr.aria-label]="'LinkedIn profile of ' + talent.name">
+              <mat-icon>language</mat-icon>
+            </button>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="cta-container">
+      <h2>Ready to Collaborate?</h2>
+      <p>Start your project journey with our talented team of digital professionals.</p>
+      <button mat-raised-button color="primary" routerLink="/service-request">
+        Create a Service Request
+      </button>
+    </div>
+  </section>
+</div>

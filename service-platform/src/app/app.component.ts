@@ -14,6 +14,8 @@ import { FooterComponent } from './components/shared/footer/footer.component';
     </main>
     <app-footer></app-footer>
   `,
-  styleUrl: './app.scss'
+  styleUrls: ['./app.component.scss']
 })
-export class App {}
+export class AppComponent {
+  title = 'Digital Contractor';
+}
