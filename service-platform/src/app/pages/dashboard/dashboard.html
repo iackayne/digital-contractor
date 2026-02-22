@@ -1,1 +1,165 @@
-<p>dashboard works!</p>
+<div class="dashboard-container">
+  <div class="dashboard-header">
+    <h1>Project Dashboard</h1>
+    <p>Monitor all your active and upcoming projects</p>
+  </div>
+
+  <!-- Quick Stats -->
+  <div class="stats-grid">
+    <mat-card class="stat-card">
+      <div class="stat-number">{{ activeProjects.length }}</div>
+      <div class="stat-label">Active Projects</div>
+    </mat-card>
+    <mat-card class="stat-card">
+      <div class="stat-number">{{ pendingProjects.length }}</div>
+      <div class="stat-label">Pending Projects</div>
+    </mat-card>
+    <mat-card class="stat-card">
+      <div class="stat-number">{{ completedProjects.length }}</div>
+      <div class="stat-label">Completed</div>
+    </mat-card>
+    <mat-card class="stat-card">
+      <div class="stat-number">{{ projects().length }}</div>
+      <div class="stat-label">Total Projects</div>
+    </mat-card>
+  </div>
+
+  <!-- Active Projects Section -->
+  <div class="section">
+    <h2>Active Projects</h2>
+    <div class="projects-grid">
+      <mat-card *ngFor="let project of activeProjects" class="project-card">
+        <div class="project-header">
+          <h3>{{ project.name }}</h3>
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>Edit</button>
+            <button mat-menu-item>View Details</button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item>Archive</button>
+          </mat-menu>
+        </div>
+
+        <div class="project-metadata">
+          <span class="category">{{ project.category }}</span>
+          <mat-chip-set aria-label="Status">
+            <mat-chip [color]="getStatusColor(project.status)" selected>
+              <mat-icon matChipAvatar>{{ getStatusIcon(project.status) }}</mat-icon>
+              {{ project.status | titlecase }}
+            </mat-chip>
+          </mat-chip-set>
+        </div>
+
+        <div class="project-details">
+          <div class="detail-row">
+            <span class="label">Budget:</span>
+            <span class="value">{{ project.budget }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="label">Deadline:</span>
+            <span class="value">{{ project.deadline | date: 'MMM dd, yyyy' }}</span>
+          </div>
+        </div>
+
+        <div class="progress-section">
+          <div class="progress-header">
+            <span>Progress</span>
+            <span class="percentage">{{ project.progress }}%</span>
+          </div>
+          <mat-progress-bar mode="determinate" [value]="project.progress"></mat-progress-bar>
+        </div>
+
+        <div class="project-footer">
+          <span class="last-update">Updated: {{ project.lastUpdate }}</span>
+          <button mat-button color="primary">View Details</button>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+
+  <!-- Pending Projects Section -->
+  <div class="section" *ngIf="pendingProjects.length > 0">
+    <h2>Pending Projects</h2>
+    <div class="projects-grid">
+      <mat-card *ngFor="let project of pendingProjects" class="project-card pending">
+        <div class="project-header">
+          <h3>{{ project.name }}</h3>
+          <button mat-icon-button [matMenuTriggerFor]="pendingMenu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #pendingMenu="matMenu">
+            <button mat-menu-item>Start Project</button>
+            <button mat-menu-item>Edit</button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item>Delete</button>
+          </mat-menu>
+        </div>
+
+        <div class="project-metadata">
+          <span class="category">{{ project.category }}</span>
+          <mat-chip-set aria-label="Status">
+            <mat-chip [color]="getStatusColor(project.status)" selected>
+              <mat-icon matChipAvatar>{{ getStatusIcon(project.status) }}</mat-icon>
+              {{ project.status | titlecase }}
+            </mat-chip>
+          </mat-chip-set>
+        </div>
+
+        <div class="project-details">
+          <div class="detail-row">
+            <span class="label">Budget:</span>
+            <span class="value">{{ project.budget }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="label">Deadline:</span>
+            <span class="value">{{ project.deadline | date: 'MMM dd, yyyy' }}</span>
+          </div>
+        </div>
+
+        <div class="project-footer">
+          <button mat-raised-button color="primary">Start Project</button>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+
+  <!-- Completed Projects Section -->
+  <div class="section" *ngIf="completedProjects.length > 0">
+    <h2>Completed Projects</h2>
+    <div class="projects-grid">
+      <mat-card *ngFor="let project of completedProjects" class="project-card completed">
+        <div class="project-header">
+          <h3>{{ project.name }}</h3>
+          <mat-icon class="success-icon">check_circle</mat-icon>
+        </div>
+
+        <div class="project-metadata">
+          <span class="category">{{ project.category }}</span>
+          <mat-chip-set aria-label="Status">
+            <mat-chip [color]="getStatusColor(project.status)" selected>
+              <mat-icon matChipAvatar>{{ getStatusIcon(project.status) }}</mat-icon>
+              {{ project.status | titlecase }}
+            </mat-chip>
+          </mat-chip-set>
+        </div>
+
+        <div class="project-details">
+          <div class="detail-row">
+            <span class="label">Budget:</span>
+            <span class="value">{{ project.budget }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="label">Completed:</span>
+            <span class="value">{{ project.deadline | date: 'MMM dd, yyyy' }}</span>
+          </div>
+        </div>
+
+        <div class="project-footer">
+          <button mat-button>View Project</button>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

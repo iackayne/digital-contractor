@@ -1,1 +1,158 @@
-<p>calendar works!</p>
+<div class="scheduling-container">
+  <div class="scheduling-header">
+    <h1>Schedule a Call</h1>
+    <p>Book a time to discuss your project needs with our team</p>
+  </div>
+
+  <!-- Booking Form or Confirmation -->
+  <div class="booking-section">
+    <!-- Form State -->
+    <mat-card *ngIf="!bookingConfirmed()" class="booking-card">
+      <h2>Booking Details</h2>
+      
+      <form [formGroup]="bookingForm" (ngSubmit)="submitBooking()">
+        <!-- Contact Information -->
+        <div class="form-section">
+          <h3>Your Information</h3>
+          
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Full Name</mat-label>
+            <input matInput formControlName="name" placeholder="John Doe">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Email Address</mat-label>
+            <input matInput type="email" formControlName="email" placeholder="john@example.com">
+          </mat-form-field>
+        </div>
+
+        <!-- Call Selection -->
+        <div class="form-section">
+          <h3>Call Type</h3>
+          
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Select Call Type</mat-label>
+            <mat-select formControlName="callType">
+              <mat-option value="">-- Choose a call type --</mat-option>
+              <mat-option *ngFor="let type of callTypes" [value]="type.value">
+                {{ type.label }} ({{ type.duration }})
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <!-- Date & Time Selection -->
+        <div class="form-section">
+          <h3>Schedule</h3>
+          
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Select Date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="date">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Select Time</mat-label>
+            <mat-select formControlName="time">
+              <mat-option value="">-- Choose a time --</mat-option>
+              <mat-option *ngFor="let slot of timeSlots" [value]="slot">
+                {{ slot }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <!-- Additional Notes -->
+        <div class="form-section">
+          <h3>Additional Information</h3>
+          
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Notes (Optional)</mat-label>
+            <textarea matInput formControlName="notes" rows="4" 
+              placeholder="Tell us anything else we should know about your project..."></textarea>
+          </mat-form-field>
+        </div>
+
+        <!-- Terms Agreement -->
+        <div class="form-section">
+          <mat-checkbox formControlName="agreeTerms">
+            I agree to the terms and conditions
+          </mat-checkbox>
+        </div>
+
+        <!-- Form Actions -->
+        <div class="form-actions">
+          <button mat-stroked-button type="button" (click)="resetForm()">Clear</button>
+          <button mat-raised-button color="primary" type="submit" [disabled]="!bookingForm.valid">
+            Confirm Booking
+          </button>
+        </div>
+      </form>
+    </mat-card>
+
+    <!-- Confirmation State -->
+    <mat-card *ngIf="bookingConfirmed()" class="confirmation-card">
+      <div class="confirmation-content">
+        <div class="success-icon">
+          <mat-icon>check_circle</mat-icon>
+        </div>
+        
+        <h2>Booking Confirmed!</h2>
+        <p>Thank you for scheduling a call with us. Here are your booking details:</p>
+
+        <div class="confirmation-details">
+          <div class="detail">
+            <span class="label">Call Type:</span>
+            <span class="value">{{ confirmedBooking().callTypeLabel }}</span>
+          </div>
+          
+          <div class="detail">
+            <span class="label">Date & Time:</span>
+            <span class="value">
+              {{ confirmedBooking().date | date: 'EEEE, MMMM dd, yyyy' }} at {{ confirmedBooking().time }}
+            </span>
+          </div>
+          
+          <div class="detail">
+            <span class="label">Your Name:</span>
+            <span class="value">{{ confirmedBooking().name }}</span>
+          </div>
+          
+          <div class="detail">
+            <span class="label">Email:</span>
+            <span class="value">{{ confirmedBooking().email }}</span>
+          </div>
+
+          <div class="detail" *ngIf="confirmedBooking().notes">
+            <span class="label">Notes:</span>
+            <span class="value">{{ confirmedBooking().notes }}</span>
+          </div>
+        </div>
+
+        <div class="confirmation-message">
+          <p><strong>A confirmation email has been sent to {{ confirmedBooking().email }}</strong></p>
+          <p>You'll receive a calendar invite shortly. If you have any questions, feel free to reach out.</p>
+        </div>
+
+        <div class="confirmation-actions">
+          <button mat-raised-button color="primary" routerLink="/">
+            Return Home
+          </button>
+          <button mat-stroked-button (click)="resetForm()">
+            Schedule Another Call
+          </button>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+
+  <!-- Available Times Info -->
+  <div *ngIf="!bookingConfirmed()" class="info-section">
+    <mat-card class="info-card">
+      <h3>Available Hours</h3>
+      <p>We're available for calls Monday through Friday from 9:00 AM to 5:00 PM (EST).</p>
+      <p>Select your preferred date and time from the form above. All sessions will be conducted via video call.</p>
+    </mat-card>
+  </div>
+</div>

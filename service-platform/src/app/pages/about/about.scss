@@ -1,0 +1,291 @@
+.about-container {
+  background-color: var(--color-background);
+}
+
+// Header Section
+.about-header {
+  background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-background) 100%);
+  padding: 80px 24px;
+  text-align: center;
+  border-bottom: 1px solid var(--color-border);
+
+  h1 {
+    font-size: 2.5rem;
+    color: var(--color-text-primary);
+    margin-bottom: 12px;
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+  }
+}
+
+// Mission Section
+.mission-section {
+  padding: 80px 24px;
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.mission-container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+
+  h2 {
+    font-size: 1.75rem;
+    color: var(--color-text-primary);
+    margin-bottom: 24px;
+  }
+
+  p {
+    font-size: 1.05rem;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+  }
+}
+
+// Talent Section
+.talent-section {
+  padding: 80px 24px;
+}
+
+.talent-container {
+  max-width: 1400px;
+  margin: 0 auto;
+
+  h2 {
+    font-size: 2rem;
+    color: var(--color-text-primary);
+    margin-bottom: 48px;
+    text-align: center;
+  }
+}
+
+.talent-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 32px;
+}
+
+// Power Card Component
+.power-card {
+  padding: 24px;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    transform: translateY(-4px);
+    border-color: var(--color-primary);
+  }
+}
+
+.card-header {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--color-primary), rgba(37, 99, 235, 0.6));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: white;
+
+  mat-icon {
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.card-title {
+  flex: 1;
+
+  h3 {
+    font-size: 1.1rem;
+    color: var(--color-text-primary);
+    margin-bottom: 4px;
+  }
+
+  .title {
+    font-size: 0.9rem;
+    color: var(--color-primary);
+    font-weight: 500;
+    margin: 0;
+  }
+}
+
+.card-bio {
+  padding: 12px 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+
+  p {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+}
+
+.expertise-section {
+  h5 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+  }
+
+  mat-chip-set {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  mat-chip {
+    height: auto !important;
+    padding: 6px 12px !important;
+    font-size: 0.85rem !important;
+  }
+}
+
+.card-footer {
+  display: flex;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border);
+
+  button {
+    color: var(--color-primary);
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--color-primary-dark);
+    }
+  }
+}
+
+// CTA Section
+.cta-section {
+  background-color: var(--color-primary);
+  color: white;
+  padding: 80px 24px;
+  text-align: center;
+}
+
+.cta-container {
+  max-width: 600px;
+  margin: 0 auto;
+
+  h2 {
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 16px;
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 32px;
+    line-height: 1.6;
+  }
+
+  button {
+    background-color: white !important;
+    color: var(--color-primary) !important;
+    padding: 12px 40px;
+    font-weight: 600;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.9) !important;
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .about-header {
+    padding: 60px 16px;
+
+    h1 {
+      font-size: 1.75rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+
+  .mission-section {
+    padding: 48px 16px;
+  }
+
+  .mission-container {
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+
+  .talent-section {
+    padding: 48px 16px;
+  }
+
+  .talent-container {
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 32px;
+    }
+  }
+
+  .talent-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .card-header {
+    gap: 12px;
+  }
+
+  .avatar {
+    width: 48px;
+    height: 48px;
+
+    mat-icon {
+      font-size: 28px;
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+  .cta-section {
+    padding: 48px 16px;
+  }
+
+  .cta-container {
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+}
