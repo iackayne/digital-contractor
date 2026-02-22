@@ -17,6 +17,7 @@ import { MatTimepickerModule } from '@angular/material/timepicker';
   standalone: true,
   imports: [
     CommonModule,
+    RouterModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,

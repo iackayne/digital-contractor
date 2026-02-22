@@ -19,7 +19,7 @@ import { RouterModule } from '@angular/router';
           <ul>
             <li><a routerLink="/service-request">Create Request</a></li>
             <li><a routerLink="/dashboard">Dashboard</a></li>
-            <li><a routerLink="/scheduling">Schedule Call</a></li>
+            <li><a routerLink="/calendar">Schedule Call</a></li>
             <li><a routerLink="/about">About</a></li>
           </ul>
         </div>
